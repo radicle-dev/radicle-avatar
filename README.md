@@ -1,7 +1,7 @@
 # radicle-avatar
 
-A library for generating emoji-color combinations which serve as avatars on the
-Radicle network.
+A library for generating emoji-color combinations which serve as avatars in
+Radicle clients.
 
 Example:
 ```
