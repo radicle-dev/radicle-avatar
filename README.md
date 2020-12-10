@@ -4,13 +4,15 @@ A library for generating emoji-color combinations which serve as avatars on the
 Radicle network.
 
 Example:
-    assert_eq!(
-        Avatar::from("cloudhead", Usage::Identity),
-        Avatar {
-            emoji: "🌻".to_string(),
-            background: Color::new(24, 105, 216)
-        }
-    );
+```
+assert_eq!(
+    Avatar::from("cloudhead", Usage::Identity),
+    Avatar {
+        emoji: "🌻".to_string(),
+        background: Color::new(24, 105, 216)
+    }
+);
+```
 
 Have a look at the [tests][te] for more hints on how to use this library.
 
