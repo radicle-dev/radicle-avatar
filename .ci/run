@@ -5,3 +5,4 @@ set -eou pipefail
 ./.ci/advisory
 ./.ci/clippy
 ./.ci/docs
+./.ci/typescript
