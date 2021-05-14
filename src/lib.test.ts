@@ -1,4 +1,4 @@
-import * as lib from "../lib";
+import * as lib from "./lib";
 
 describe("generateAvatar", () => {
   it("generates identity avatars", () => {
