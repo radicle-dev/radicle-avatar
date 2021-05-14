@@ -3,3 +3,4 @@ Cargo.lock
 /lib
 yarn.lock
 node_modules
+fixtures.json

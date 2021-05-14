@@ -1,4 +1,5 @@
 import * as lib from "./lib";
+import fixtures from "../fixtures.json";
 
 describe("generateAvatar", () => {
   it("generates identity avatars", () => {
@@ -12,6 +13,17 @@ describe("generateAvatar", () => {
     expect(lib.generateAvatar("monadic", lib.Usage.Any)).toEqual({
       emoji: "🎮",
       background: { r: 148, g: 187, b: 61 },
+    });
+  });
+
+  it("generates the same output as the rust implementation", () => {
+    fixtures.forEach((fixture) => {
+      expect(
+        lib.generateAvatar(
+          fixture.input.input,
+          fixture.input.usage as lib.Usage
+        )
+      ).toEqual(fixture.output);
     });
   });
 });

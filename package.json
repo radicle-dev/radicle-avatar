@@ -8,8 +8,9 @@
   "types": "./lib/src/index.d.ts",
   "files": ["lib"],
   "scripts": {
-    "test": "jest",
+    "test": "yarn regenerate-fixtures && jest",
     "clean": "rm -rf lib/*",
+    "regenerate-fixtures": "rm -rf ./fixtures.json && cargo run generate-fixtures",
     "build": "yarn run clean && tsc --p tsconfig.package.json"
   },
   "devDependencies": {

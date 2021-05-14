@@ -10,8 +10,8 @@ interface Color {
 }
 
 export enum Usage {
-  Any,
-  Identity,
+  Any = "any",
+  Identity = "identity",
 }
 
 const FNV_OFFSET_BASIS = BigInt("14695981039346656037");
