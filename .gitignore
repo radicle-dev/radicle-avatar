@@ -1,6 +1,6 @@
 /target
 Cargo.lock
-/lib
+/dist
 node_modules
 fixtures.json
 .yarn/*

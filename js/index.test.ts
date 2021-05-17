@@ -1,4 +1,4 @@
-import * as lib from "./lib";
+import * as lib from "./index";
 import fixtures from "../fixtures.json";
 
 describe("generateAvatar", () => {

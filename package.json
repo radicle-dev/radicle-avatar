@@ -4,14 +4,14 @@
   "author": "radicle team <dev@radicle.xyz>",
   "license": "MIT OR Apache-2.0",
   "repository": "git@github.com:radicle-dev/radicle-avatar.git",
-  "main": "./lib/src/lib.js",
-  "types": "./lib/src/lib.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "test": "yarn regenerate-fixtures && jest",
-    "clean": "rm -rf lib/*",
+    "clean": "rm -rf ./dist",
     "regenerate-fixtures": "rm -rf ./fixtures.json && cargo run --example generate-fixtures",
     "build": "yarn run clean && tsc --project tsconfig.package.json",
     "prepare": "yarn run build"
