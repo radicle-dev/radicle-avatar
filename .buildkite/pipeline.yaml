@@ -6,7 +6,6 @@ steps:
       production: "true"
       platform: "linux"
     env: &build-docker-nightly
-      DOCKER_IMAGE: "gcr.io/opensourcecoin/radicle-avatar-build-nightly@sha256:3e2d6ce8675087b99e2b36330a6d1b2d68a66b274cdba006c0caef397907e8cb"
       DOCKER_FILE: .docker/nightly/Dockerfile
 
   - label: "Build + Test (stable rust)"
