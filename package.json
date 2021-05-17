@@ -11,7 +11,8 @@
     "test": "yarn regenerate-fixtures && jest",
     "clean": "rm -rf lib/*",
     "regenerate-fixtures": "rm -rf ./fixtures.json && cargo run --example generate-fixtures",
-    "build": "yarn run clean && tsc --p tsconfig.package.json"
+    "build": "yarn run clean && tsc --p tsconfig.package.json",
+    "prepublishOnly": "yarn run build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
