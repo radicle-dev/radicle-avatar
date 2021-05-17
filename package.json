@@ -4,8 +4,8 @@
   "author": "radicle team <dev@radicle.xyz>",
   "license": "MIT OR Apache-2.0",
   "repository": "git@github.com:radicle-dev/radicle-avatar.git",
-  "main": "./lib/src/index.js",
-  "types": "./lib/src/index.d.ts",
+  "main": "./lib/src/lib.js",
+  "types": "./lib/src/lib.d.ts",
   "files": ["lib"],
   "scripts": {
     "test": "yarn regenerate-fixtures && jest",
