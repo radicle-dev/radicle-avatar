@@ -4,13 +4,5 @@ set -eou pipefail
 source "$(dirname ${BASH_SOURCE[0]})/.env"
 
 echo "--- Typescript"
-echo "YARN_CACHE_FOLDER: $YARN_CACHE_FOLDER"
-export YARN_GLOBAL_FOLDER=$YARN_CACHE_FOLDER
-echo "ENV"
-echo "====="
-env
-echo "====="
-yarn config
-echo "====="
 yarn install --immutable
 yarn test
