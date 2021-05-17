@@ -141,23 +141,23 @@ impl Color {
 
     /// Compute the lightness of a color.
     #[must_use]
-    pub fn lightness(self) -> f32 {
-        let r = f32::from(self.r);
-        let g = f32::from(self.g);
-        let b = f32::from(self.b);
-        let n = f32::from(u8::max_value());
+    pub fn lightness(self) -> f64 {
+        let r = f64::from(self.r);
+        let g = f64::from(self.g);
+        let b = f64::from(self.b);
+        let n = f64::from(u8::max_value());
 
         // This isn't perceptual lightness, but whatever.
         (r / n + g / n + b / n) / 3.
     }
 
     /// Ligthen a color by an amount between `-1.0` and `1.0`.
-    fn lighten(self, amount: f32) -> Self {
+    fn lighten(self, amount: f64) -> Self {
         // Constrain range to -1 .. 1.
-        let amount = f32::max(amount, -1.0);
-        let amount = f32::min(amount, 1.0);
+        let amount = f64::max(amount, -1.0);
+        let amount = f64::min(amount, 1.0);
 
-        let x = (amount.abs() * (255_f32)) as u8;
+        let x = (amount.abs() * (255_f64)) as u8;
 
         if amount >= 0. {
             let r = self.r.saturating_add(x);
