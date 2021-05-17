@@ -36,3 +36,9 @@ steps:
       - ".ci/docs"
     agents: *build-agent
     env: *build-docker-nightly
+
+  - label: "Typescript"
+    commands:
+      - ".ci/typescript"
+    agents: *build-agent
+    env: *build-docker-nightly
