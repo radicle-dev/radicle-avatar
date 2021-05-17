@@ -3,3 +3,10 @@ Cargo.lock
 /lib
 node_modules
 fixtures.json
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
