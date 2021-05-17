@@ -9,5 +9,7 @@ echo "ENV"
 echo "====="
 env
 echo "====="
+yarn config
+echo "====="
 yarn install --immutable
 yarn test
