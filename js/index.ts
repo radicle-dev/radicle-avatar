@@ -1,7 +1,7 @@
-type Avatar = {
+interface Avatar {
   emoji: string;
   background: Color;
-};
+}
 
 interface Color {
   r: number;
