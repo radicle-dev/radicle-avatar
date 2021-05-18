@@ -25,6 +25,18 @@ describe("generateAvatar", () => {
     );
   });
 
+  it("calculates the lightness correctly in 64 bit float arithmetic", () => {
+    expect(
+      avatar.generate(
+        "yjtjopGx9QaV5y5nBsaDoAWut2WjjHpGhiz7rr7E",
+        avatar.Usage.Any
+      )
+    ).toEqual({
+      emoji: "🍙",
+      background: { r: 70, g: 176, b: 120 },
+    });
+  });
+
   it(`generates the same output as the rust implementation x${fixtures.length} times`, () => {
     fixtures.forEach((fixture) => {
       expect(

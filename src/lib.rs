@@ -248,12 +248,23 @@ mod test {
     use super::{generate_color, generate_emoji, hash, Avatar, Color, Emoji, Usage};
 
     #[test]
-    fn test_avatar() {
+    fn test_avatar_identity() {
         assert_eq!(
             Avatar::from("cloudhead", Usage::Identity),
             Avatar {
                 emoji: "🌻".to_string(),
                 background: Color::new(24, 105, 216)
+            }
+        );
+    }
+
+    #[test]
+    fn test_avatar_any() {
+        assert_eq!(
+            Avatar::from("monadic", Usage::Any),
+            Avatar {
+                emoji: "🎮".to_string(),
+                background: Color::new(148, 187, 61)
             }
         );
     }
@@ -265,6 +276,19 @@ mod test {
             Avatar {
                 emoji: "🌺".to_string(),
                 background: Color::new(25, 229, 39)
+            }
+        );
+    }
+
+    // This is an edge case that produces different outputs depending on
+    // whether we use f32 or f64 float arithmetic.
+    #[test]
+    fn test_avatar_f32_f64_rounding() {
+        assert_eq!(
+            Avatar::from("yjtjopGx9QaV5y5nBsaDoAWut2WjjHpGhiz7rr7E", Usage::Any),
+            Avatar {
+                emoji: "🍙".to_string(),
+                background: Color::new(70, 176, 120)
             }
         );
     }
