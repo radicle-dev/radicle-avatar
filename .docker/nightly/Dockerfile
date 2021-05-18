@@ -18,6 +18,15 @@ RUN set -eux; \
     apt-get autoremove; \
     rm -rf /var/lib/apt/lists/*
 
+# install node and yarn
+RUN set -eux; \
+  curl -sfLS https://deb.nodesource.com/setup_14.x | bash -; \
+  apt-get -y update; \
+  apt-get -y --no-install-recommends install nodejs; \
+  apt-get autoremove; \
+  rm -rf /var/lib/apt/lists/*; \
+  npm install --global yarn;
+
 # Rust toolchain
 # Make sure this is in sync with rust-toolchain!
 ENV RUST_VERSION=nightly-2020-11-10 \

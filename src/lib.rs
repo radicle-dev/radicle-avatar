@@ -141,23 +141,23 @@ impl Color {
 
     /// Compute the lightness of a color.
     #[must_use]
-    pub fn lightness(self) -> f32 {
-        let r = f32::from(self.r);
-        let g = f32::from(self.g);
-        let b = f32::from(self.b);
-        let n = f32::from(u8::max_value());
+    pub fn lightness(self) -> f64 {
+        let r = f64::from(self.r);
+        let g = f64::from(self.g);
+        let b = f64::from(self.b);
+        let n = f64::from(u8::max_value());
 
         // This isn't perceptual lightness, but whatever.
         (r / n + g / n + b / n) / 3.
     }
 
     /// Ligthen a color by an amount between `-1.0` and `1.0`.
-    fn lighten(self, amount: f32) -> Self {
+    fn lighten(self, amount: f64) -> Self {
         // Constrain range to -1 .. 1.
-        let amount = f32::max(amount, -1.0);
-        let amount = f32::min(amount, 1.0);
+        let amount = f64::max(amount, -1.0);
+        let amount = f64::min(amount, 1.0);
 
-        let x = (amount.abs() * (255_f32)) as u8;
+        let x = (amount.abs() * (255_f64)) as u8;
 
         if amount >= 0. {
             let r = self.r.saturating_add(x);
@@ -248,12 +248,47 @@ mod test {
     use super::{generate_color, generate_emoji, hash, Avatar, Color, Emoji, Usage};
 
     #[test]
-    fn test_avatar() {
+    fn test_avatar_identity() {
         assert_eq!(
             Avatar::from("cloudhead", Usage::Identity),
             Avatar {
                 emoji: "🌻".to_string(),
                 background: Color::new(24, 105, 216)
+            }
+        );
+    }
+
+    #[test]
+    fn test_avatar_any() {
+        assert_eq!(
+            Avatar::from("monadic", Usage::Any),
+            Avatar {
+                emoji: "🎮".to_string(),
+                background: Color::new(148, 187, 61)
+            }
+        );
+    }
+
+    #[test]
+    fn test_avatar_non_ascii() {
+        assert_eq!(
+            Avatar::from("Šaursliežudzelzceļš 🚂", Usage::Any),
+            Avatar {
+                emoji: "🌺".to_string(),
+                background: Color::new(25, 229, 39)
+            }
+        );
+    }
+
+    // This is an edge case that produces different outputs depending on
+    // whether we use f32 or f64 float arithmetic.
+    #[test]
+    fn test_avatar_f32_f64_rounding() {
+        assert_eq!(
+            Avatar::from("yjtjopGx9QaV5y5nBsaDoAWut2WjjHpGhiz7rr7E", Usage::Any),
+            Avatar {
+                emoji: "🍙".to_string(),
+                background: Color::new(70, 176, 120)
             }
         );
     }
