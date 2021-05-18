@@ -16,7 +16,7 @@ describe("generateAvatar", () => {
     });
   });
 
-  it("generates the same output as the rust implementation", () => {
+  it(`generates the same output as the rust implementation x${fixtures.length} times`, () => {
     fixtures.forEach((fixture) => {
       expect(
         avatar.generate(
