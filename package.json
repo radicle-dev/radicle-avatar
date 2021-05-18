@@ -4,8 +4,8 @@
   "author": "radicle team <dev@radicle.xyz>",
   "license": "MIT OR Apache-2.0",
   "repository": "git@github.com:radicle-dev/radicle-avatar.git",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/js/index.js",
+  "types": "./dist/js/index.d.ts",
   "files": [
     "dist"
   ],
