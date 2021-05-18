@@ -1,9 +1,7 @@
 use radicle_avatar::{Avatar, Usage};
-use rand::distributions::Alphanumeric;
-use rand::Rng;
+use rand::{distributions::Alphanumeric, Rng};
 use serde::{Deserialize, Serialize};
-use std::fs;
-use std::iter;
+use std::{fs, iter};
 
 #[derive(Serialize, Deserialize)]
 struct Input {
