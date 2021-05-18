@@ -14,14 +14,15 @@ export enum Usage {
   Identity = "identity",
 }
 
-const FNV_OFFSET_BASIS = BigInt("14695981039346656037");
-const FNV_PRIME = BigInt("1099511628211");
-
 const fnv1aHash = (input: string) => {
+  const FNV_OFFSET_BASIS = BigInt("14695981039346656037");
+  const FNV_PRIME = BigInt("1099511628211");
+
+  const bytes = Buffer.from(input, "utf8");
   let hash = FNV_OFFSET_BASIS;
 
-  for (let i = 0; i < input.length; i++) {
-    hash ^= BigInt(input.charCodeAt(i));
+  for (const byte of bytes) {
+    hash ^= BigInt(byte);
     hash = BigInt.asUintN(64, hash * FNV_PRIME);
   }
 

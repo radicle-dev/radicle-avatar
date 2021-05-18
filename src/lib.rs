@@ -259,6 +259,17 @@ mod test {
     }
 
     #[test]
+    fn test_avatar_non_ascii() {
+        assert_eq!(
+            Avatar::from("Šaursliežudzelzceļš 🚂", Usage::Any),
+            Avatar {
+                emoji: "🌺".to_string(),
+                background: Color::new(25, 229, 39)
+            }
+        );
+    }
+
+    #[test]
     fn test_avatar_hash() {
         assert_eq!(hash("chongo was here!\n\0"), 0xc33b_ce57_bef6_3eaf);
     }

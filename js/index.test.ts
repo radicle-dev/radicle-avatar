@@ -16,6 +16,15 @@ describe("generateAvatar", () => {
     });
   });
 
+  it("works with non-ascii characters", () => {
+    expect(avatar.generate("Šaursliežudzelzceļš 🚂", avatar.Usage.Any)).toEqual(
+      {
+        emoji: "🌺",
+        background: { r: 25, g: 229, b: 39 },
+      }
+    );
+  });
+
   it(`generates the same output as the rust implementation x${fixtures.length} times`, () => {
     fixtures.forEach((fixture) => {
       expect(
