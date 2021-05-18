@@ -91,12 +91,14 @@ const lighten = (color: Color, amount: number) => {
   }
 };
 
-export const generateAvatar = (input: string, usage: Usage): Avatar => {
+const generateAvatar = (input: string, usage: Usage): Avatar => {
   return {
     emoji: generateEmoji(input, usage),
     background: compressColor(generateColor(input)),
   };
 };
+
+export const generate = generateAvatar;
 
 export const __test__ = {
   fnv1aHash,
