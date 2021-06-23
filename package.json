@@ -6,7 +6,7 @@
   "repository": "git@github.com:radicle-dev/radicle-avatar.git",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": ["dist", "LICENSE-MIT", "LICENSE-APACHE"],
   "scripts": {
     "test": "yarn regenerate-fixtures && jest",
     "clean": "rm -rf ./dist",
