@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        checks:
+          - advisories
+          - bans licenses sources
+
+    # Prevent sudden announcement of a new advisory from failing ci:
+    continue-on-error: ${{ matrix.checks == 'advisories' }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: EmbarkStudios/cargo-deny-action@v1
+      with:
+        command: check ${{ matrix.checks }}
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - name: Cache Yarn
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/cache/yarn
+          key: test-${{ runner.os }}-yarn-v1-${{ hashFiles('yarn.lock') }}
+      - name: Cache Rust
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git
+            ./target/*/deps
+            ./target/*/build
+            ./target/*/.fingerprint
+          key: test-${{ runner.os }}-rust-v1-${{ hashFiles('Cargo.lock', 'rust-toolchain') }}
+      - run: ci/test.sh

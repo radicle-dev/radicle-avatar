@@ -31,7 +31,7 @@ fn main() -> std::io::Result<()> {
         };
         test_cases.push(TestCase {
             input: input_any,
-            output: Avatar::from(&&random_string, Usage::Any),
+            output: Avatar::from(&random_string, Usage::Any),
         });
 
         let input_identity = Input {
@@ -40,7 +40,7 @@ fn main() -> std::io::Result<()> {
         };
         test_cases.push(TestCase {
             input: input_identity,
-            output: Avatar::from(&&random_string, Usage::Identity),
+            output: Avatar::from(&random_string, Usage::Identity),
         });
     }
 
